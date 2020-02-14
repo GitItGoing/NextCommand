@@ -1,0 +1,12 @@
+# SpawnCommand
+spawncommand:
+  teleportation: "&7Teleportation..."
+  no-spawn: "&7No spawn points have been set!"
+  spawn-set: "&7The spawn point has been set!"
+  location:
+    World:
+    X:
+    Y:
+    Z:
+    Yaw:
+    Pitch:
