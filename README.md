@@ -20,7 +20,7 @@ NextCommand needs the following prerequisites to run properly:
 
 ## Usage
 
-A configuration file is automatically generated the first time you restart your server. It is located in the */plugins/nextcommand/config.yml* directory. In this file, you can edit all the plugin messages and the plugin configuration.
+Configurations file are automatically generated the first time you restart your server. They are located in the */plugins/NextCommand/* directory. In these files, you can edit all plugin messages and plugin configuration.
 
 ## Credits
 
