@@ -1,8 +1,13 @@
 package com.itsjustmiaouss.nextcommand;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,9 +22,13 @@ import com.itsjustmiaouss.nextcommand.commands.HealCommand;
 import com.itsjustmiaouss.nextcommand.commands.NextCommand;
 import com.itsjustmiaouss.nextcommand.commands.SpawnCommand;
 import com.itsjustmiaouss.nextcommand.events.ChatEvent;
+import com.itsjustmiaouss.nextcommand.events.EntityEvent;
 import com.itsjustmiaouss.nextcommand.events.PlayerEvent;
 
 public class Main extends JavaPlugin implements Listener {
+	
+	private File spawnConfigFile;
+	private FileConfiguration spawnConfig;
 	
 	public String prefix = (getConfig().getString("prefix").replaceAll("&", "§") + " ").toString();
 	public String prefixerror = (getConfig().getString("prefix-error").replaceAll("&", "§") + " ").toString();
@@ -29,9 +38,11 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		saveDefaultConfig();
+		createSpawnconfig();
 		
 		getServer().getPluginManager().registerEvents(new PlayerEvent(this), this);
 		getServer().getPluginManager().registerEvents(new ChatEvent(this), this);
+		getServer().getPluginManager().registerEvents(new EntityEvent(this), this);
 		
 		getCommand("nextcommand").setExecutor(new NextCommand(this));
 		getCommand("fly").setExecutor(new FlyCommand(this));
@@ -45,5 +56,24 @@ public class Main extends JavaPlugin implements Listener {
 		int pluginId = 6498;
 		@SuppressWarnings("unused")
 		Metrics metrics = new Metrics(this, pluginId);
+	}
+	
+	public FileConfiguration getSpawnConfig() {
+		return this.spawnConfig;
+	}
+	
+	private void createSpawnconfig() {
+		spawnConfigFile = new File(getDataFolder(), "spawn.yml");
+		if(!spawnConfigFile.exists()) {
+			spawnConfigFile.getParentFile().mkdirs();
+			saveResource("spawn.yml", false);
+		}
+		
+		spawnConfig = new YamlConfiguration();
+		try {
+			spawnConfig.load(spawnConfigFile);
+		} catch (IOException | InvalidConfigurationException e) {
+			e.printStackTrace();
+		}
 	}
 }
