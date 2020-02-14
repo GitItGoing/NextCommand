@@ -19,7 +19,7 @@ public class ChatEvent implements Listener {
 	public void onChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 		String m = e.getMessage();
-		if(p.hasPermission("nextcommand.chatcolors")) {
+		if(p.hasPermission("nextcommand.chatcolors") || p.hasPermission("nextcommand.*")) {
 			if(main.getConfig().getBoolean("chatevent.allow-custom-colors") == true) {
 				m = m.replaceAll("&", "§");
 				e.setMessage(m);

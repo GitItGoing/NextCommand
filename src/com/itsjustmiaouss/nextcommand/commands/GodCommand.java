@@ -36,7 +36,7 @@ public class GodCommand implements CommandExecutor {
 		Player p =(Player)sender;
 		
 		if(args.length == 0) {
-			if(!p.hasPermission("nextcommand.god")) {
+			if(!p.hasPermission("nextcommand.god") || !p.hasPermission("nextcommand.*")) {
 				p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 				return true;
 			}
@@ -53,7 +53,7 @@ public class GodCommand implements CommandExecutor {
 		}
 		
 		if(args.length >= 1) {
-			if(!p.hasPermission("nextcommand.god.other")) {
+			if(!p.hasPermission("nextcommand.god.other") || !p.hasPermission("nextcommand.*")) {
 			p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 			return true;
 			}

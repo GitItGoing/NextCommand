@@ -36,7 +36,7 @@ public class FlyCommand implements CommandExecutor {
 		Player p =(Player)sender;
 		
 		if(args.length == 0) {
-			if(!p.hasPermission("nextcommand.fly")) {
+			if(!p.hasPermission("nextcommand.fly") || !p.hasPermission("nextcommand.*")) {
 				p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 				return true;
 			}
@@ -55,7 +55,7 @@ public class FlyCommand implements CommandExecutor {
 		}
 		
 		if(args.length >= 1) {
-			if(!p.hasPermission("nextcommand.fly.other")) {
+			if(!p.hasPermission("nextcommand.fly.other") || !p.hasPermission("nextcommand.*")) {
 				
 			p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 			return true;

@@ -32,7 +32,7 @@ public class NextCommand implements CommandExecutor, TabCompleter {
 			String s = args[0];
 			switch (s) {
 			case "reload":
-				if(!sender.hasPermission("nextcommand.reload")) {
+				if(!sender.hasPermission("nextcommand.reload") || !sender.hasPermission("nextcommand.*")) {
 					sender.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 					return true;
 				}

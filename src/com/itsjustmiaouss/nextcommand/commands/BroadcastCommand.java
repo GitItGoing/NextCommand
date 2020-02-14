@@ -30,7 +30,7 @@ public class BroadcastCommand implements CommandExecutor {
 		
 		Player p =(Player)sender;
 		
-		if(!p.hasPermission("nextcommand.broadcast")) {
+		if(!p.hasPermission("nextcommand.broadcast") || !p.hasPermission("nextcommand.*")) {
 			p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 			return true;
 		}

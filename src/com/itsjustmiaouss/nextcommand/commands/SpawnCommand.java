@@ -34,7 +34,7 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
 		Player p =(Player)sender;
 		
 		if(args.length == 0) {
-			if(!p.hasPermission("nextcommand.spawn")) {
+			if(!p.hasPermission("nextcommand.spawn") || !p.hasPermission("nextcommand.*")) {
 				p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 				return true;
 			}
@@ -57,7 +57,7 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
 		}
 		
 		if(args.length >= 1) {
-			if(!p.hasPermission("nextcommand.spawn.set")) {
+			if(!p.hasPermission("nextcommand.spawn.set") || !p.hasPermission("nextcommand.*")) {
 			p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 			return true;
 			}

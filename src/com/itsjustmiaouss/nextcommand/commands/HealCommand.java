@@ -37,7 +37,7 @@ public class HealCommand implements CommandExecutor {
 		int maxHealthLevel = 20;
 		
 		if(args.length == 0) {
-			if(!p.hasPermission("nextcommand.feed")) {
+			if(!p.hasPermission("nextcommand.feed") || !p.hasPermission("nextcommand.*")) {
 				p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 				return true;
 			}
@@ -53,7 +53,7 @@ public class HealCommand implements CommandExecutor {
 		}
 		
 		if(args.length >= 1) {
-			if(!p.hasPermission("nextcommand.feed.other")) {
+			if(!p.hasPermission("nextcommand.feed.other") || !p.hasPermission("nextcommand.*")) {
 			p.sendMessage(main.prefixerror + main.getConfig().getString("no-permission").replaceAll("&", "§"));
 			return true;
 			}

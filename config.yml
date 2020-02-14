@@ -1,6 +1,7 @@
 # This is the configuration file on the NextCommand plugin.
 
 # Permission list:
+# nextcommand.*
 # nextcommand.reload
 # nextcommand.fly (.other)
 # nextcommand.heal (.other)

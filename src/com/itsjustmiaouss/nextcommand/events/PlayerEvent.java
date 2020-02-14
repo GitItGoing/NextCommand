@@ -53,7 +53,7 @@ public class PlayerEvent implements Listener {
 		if(main.getConfig().getBoolean("commandprotection.enable-protection") == true) {	
 			for(String str : commands) {
 				if(e.getMessage().equalsIgnoreCase("/" + str)) {	
-					if(!p.hasPermission("nextcommand.bypassprotection")) {
+					if(!p.hasPermission("nextcommand.bypassprotection") || !p.hasPermission("nextcommand.*")) {
 						e.setCancelled(true);
 						p.sendMessage(main.prefixerror + main.getConfig().getString("commandprotection.protection-message").replaceAll("&", "§"));
 						return;
